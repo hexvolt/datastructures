@@ -1,12 +1,12 @@
-# Definition for singly-linked list.
 class ListNode(object):
+
     def __init__(self, x):
         self.val = x
         self.next = None
 
 
-# Definition for a binary tree node.
 class TreeNode(object):
+
     def __init__(self, x):
         self.val = x
         self.left = None
@@ -14,17 +14,16 @@ class TreeNode(object):
 
 
 def get_list_length(head):
-    """ Returnd the length of the linked list """
+    """ Returns the length of the linked list """
 
-    if not head:
-        return 0
+    node = head
 
-    l = 1
-    while head and head.next:
-        head = head.next
-        l += 1
+    length = 0
+    while node:
+        node = node.next
+        length += 1
 
-    return l
+    return length
 
 
 def assign_heights(head):
@@ -63,8 +62,14 @@ class Solution(object):
 
             elif delta < -1:
                 # current node is few levels lower than the topmost, so the are no direct connection with the topmost
-                # and we need to find out the correct right child of the topmost tree node
-                topmost_tree_node.right = self.build_tree(self.current_node)
+                if not topmost_tree_node.right:
+                    # if there is no right branch yet - determine it:
+                    topmost_tree_node.right = self.build_tree(self.current_node)
+                else:
+                    # the right branch already exists so current node is descendant of topmost's right branch
+                    topmost_tree_node.right.right = self.build_tree(self.current_node)
+
+                continue
 
             elif delta > 1:
                 # if we have a positive leap of height then there are no direct ascendants in the provided linked list,
