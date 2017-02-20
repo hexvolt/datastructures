@@ -152,6 +152,8 @@ class Solution(object):
         :type head: ListNode
         :rtype: TreeNode
         """
+        if not head:
+            return
 
         self.list_length = get_list_length(head)
         self.assign_heights(head)
