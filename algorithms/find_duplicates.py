@@ -12,7 +12,12 @@ class BitVector(object):
     _vector = None
 
     def __init__(self, vector_size):
-        self._vector = bytearray([0 for _ in range(vector_size)])
+        """
+        Initializes a vector of a certain size in bit
+
+        :param vector_size: a number of bits to allocate
+        """
+        self._vector = bytearray([0 for _ in range(vector_size // 8)])
 
     def get_bit_address(self, number):
         """
