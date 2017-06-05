@@ -273,7 +273,9 @@ class BSTree(BinaryTree):
 if __name__ == '__main__':
     tree = BSTree(100, 50, 150, 25, 75, 125, 175, 110)
 
-    list(tree.inorder(tree.root))
-    list(tree.inorder_iterative())
-    list(tree.preorder(tree.root))
-    list(tree.preorder_iterative())
+    tree.print_tree()
+
+    print(list(tree.inorder(tree.root)))
+    print(list(tree.inorder_iterative()))
+    print(list(tree.preorder(tree.root)))
+    print(list(tree.preorder_iterative()))
